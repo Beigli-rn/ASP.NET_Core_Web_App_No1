@@ -1,0 +1,62 @@
+﻿@page
+@model StudentManagerSteps.Pages.OrderModel
+@{
+    ViewData["Title"] = "Order page";
+}
+
+
+
+<div class="container">
+    <h1 class="display-4">Rendelés</h1>
+    <div class="row">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+                @foreach(var item in Model.Pizza)
+                {
+                    
+                    string src = "img/pizza1.webp";
+                    if (item.Name == "Hawaii")
+                    {
+                        src = "img/pizza2.webp";
+                    }
+                    else if(item.Name == "Sonkas Sajtos")
+                    {
+                        src = "img/pizza3.webp";
+                    }
+                    else if (item.Name == "Csipos")
+                    {
+                        src = "img/pizza4.webp";
+                    }
+
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="@src" class="card-img-top" alt="...">
+                        <div class="card-body">
+
+                            <h5 class="card-title">@Html.DisplayFor(name => item.Name)</h5>
+                            <div class="row">
+                                <div class="col-6 ">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                <label class="form-check-label" for="inlineRadio1">S</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" checked>
+                                <label class="form-check-label" for="inlineRadio2">M</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" >
+                                <label class="form-check-label" for="inlineRadio3">L</label>
+                            </div>
+                                </div>
+                                <h5>@Html.DisplayFor(price => item.Price) Ft -tól</h5>
+                                <div class="col-6 text-end">
+                                    <button type="button" class="btn btn-warning">Rendelés</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                }
+        </div>
+    </div>
+</div>
